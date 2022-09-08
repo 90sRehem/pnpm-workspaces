@@ -1,0 +1,6 @@
+packages:
+  - api
+  - client
+  - domain
+  - infra
+  - packages/*
