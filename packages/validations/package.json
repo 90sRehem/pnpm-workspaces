@@ -1,0 +1,15 @@
+{
+  "name": "validations",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "Jonathan Rehem <jonathan.de.oliveira@live.com>",
+  "license": "ISC",
+  "dependencies": {
+    "notifications": "workspace:*"
+  }
+}
