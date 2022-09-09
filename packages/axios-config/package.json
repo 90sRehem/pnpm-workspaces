@@ -1,16 +1,15 @@
 {
-  "name": "validations",
+  "name": "axios-config",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "vitest",
-    "build": "tsc"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Jonathan Rehem <jonathan.de.oliveira@live.com>",
   "license": "ISC",
   "dependencies": {
-    "notifications": "workspace:*"
+    "axios": "^0.27.2"
   }
 }

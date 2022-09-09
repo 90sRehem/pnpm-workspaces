@@ -1,0 +1,24 @@
+{
+  "name": "domain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "Jonathan Rehem <jonathan.de.oliveira@live.com>",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "notifications": "workspace:*",
+    "shallow-equal-object": "^1.1.1",
+    "validations": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/jsonwebtoken": "^8.5.9",
+    "inversify": "^6.0.1"
+  }
+}

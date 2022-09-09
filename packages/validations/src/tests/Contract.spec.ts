@@ -1,3 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies */
+import {
+  describe,
+  it,
+  expect,
+  beforeAll,
+} from "vitest";
+
 describe("Contract tests", () => {
   beforeAll(() => {
 

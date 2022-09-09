@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Template for monorepos",
   "private": true,
-  "main": "index.js",
   "scripts": {
     "test": "jest"
   },
@@ -16,15 +15,16 @@
     "@swc/jest": "^0.2.22",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
-    "@types/jest": "^29.0.0",
     "@types/node": "^18.7.16",
+    "dotenv": "^16.0.2",
     "express": "^4.18.1",
-    "jest": "^28.0.0",
+    "inversify-express-utils": "^6.4.3",
+    "jsonwebtoken": "^8.5.1",
     "rimraf": "^3.0.2",
-    "ts-jest": "^28.0.8",
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.1.0",
-    "typescript": "^4.8.3"
+    "typescript": "^4.8.3",
+    "vitest": "^0.23.1"
   },
   "dependencies": {
     "eslint-config": "workspace:*"

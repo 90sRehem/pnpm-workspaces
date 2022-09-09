@@ -10,11 +10,11 @@ export abstract class Notifiable implements INotifiable {
   }
 
   public get Messages(): Array<string> {
-    return this._notifications.map(x => x.message);
+    return this._notifications.map((x) => x.message);
   }
 
   public get Properties(): Array<string> {
-    return this._notifications.map(x => x.property);
+    return this._notifications.map((x) => x.property);
   }
 
   public get Invalid(): boolean {

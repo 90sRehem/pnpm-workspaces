@@ -1,3 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies */
+import {
+  describe,
+  beforeAll,
+  expect,
+  it,
+} from "vitest";
+
 import {
   InvalidNotificationUsingPropAndMsg,
   InvalidNotificationUsingObject,
@@ -10,11 +18,9 @@ let invalidNotificationUsingObjectArray: InvalidNotificationUsingObjectArray;
 
 describe("Notifications tests", () => {
   beforeAll(() => {
-    invalidNotificationUsingPropAndMsg =
-      new InvalidNotificationUsingPropAndMsg();
+    invalidNotificationUsingPropAndMsg = new InvalidNotificationUsingPropAndMsg();
     invalidNotificationUsingObject = new InvalidNotificationUsingObject();
-    invalidNotificationUsingObjectArray =
-      new InvalidNotificationUsingObjectArray();
+    invalidNotificationUsingObjectArray = new InvalidNotificationUsingObjectArray();
   });
 
   it("Should return invalid passing property, message and must contain one notification", () => {

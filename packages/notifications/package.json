@@ -2,16 +2,16 @@
   "name": "notifications",
   "version": "1.0.0",
   "description": "A code library for domain notifications, reusable in the frontend and backend.",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "vitest",
     "build": "rimraf ./dist && swc src --out-dir dist"
   },
   "keywords": [],
   "author": "Jonathan Rehem <jonathan.de.oliveira@live.com>",
   "license": "ISC",
   "dependencies": {
-    "validations": "workspace:*",
-    "eslint-config": "workspace:*"
+    "eslint-config": "workspace:*",
+    "validations": "workspace:*"
   }
 }
