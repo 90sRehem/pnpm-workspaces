@@ -41,7 +41,9 @@ importers:
 
   apps/api:
     specifiers:
+      '@types/jsonwebtoken': ^8.5.9
       cors: ^2.8.5
+      domain: workspace:*
       dotenv: ^16.0.2
       express: ^4.18.1
       express-async-errors: ^3.1.1
@@ -51,7 +53,9 @@ importers:
       reflect-metadata: ^0.1.13
       shallow-equal-object: ^1.1.1
     dependencies:
+      '@types/jsonwebtoken': 8.5.9
       cors: 2.8.5
+      domain: link:../../packages/domain
       dotenv: 16.0.2
       express: 4.18.1
       express-async-errors: 3.1.1_express@4.18.1
@@ -569,7 +573,6 @@ packages:
     resolution: {integrity: sha512-272FMnFGzAVMGtu9tkr29hRL6bZj4Zs1KZNeHLnKqAvp06tAIcarTMwOh8/8bz4FmKRcMxZhZNeUAQsNLoiPhg==}
     dependencies:
       '@types/node': 18.7.16
-    dev: true
 
   /@types/mime/3.0.1:
     resolution: {integrity: sha512-Y4XFY5VJAuw0FgAqPNd6NNoV44jbq9Bz2L7Rh/J6jLTiHBSBJa9fxqQIvkIld4GsoDOcCbvzOUAbLPsSKKg+uA==}
@@ -577,7 +580,6 @@ packages:
 
   /@types/node/18.7.16:
     resolution: {integrity: sha512-EQHhixfu+mkqHMZl1R2Ovuvn47PUw18azMJOTwSZr9/fhzHNGXAJ0ma0dayRVchprpCj0Kc1K1xKoWaATWF1qg==}
-    dev: true
 
   /@types/qs/6.9.7:
     resolution: {integrity: sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==}

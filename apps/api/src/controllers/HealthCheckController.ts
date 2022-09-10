@@ -1,5 +1,8 @@
 import {
-  BaseHttpController, controller, Controller, httpGet,
+  BaseHttpController,
+  controller,
+  Controller,
+  httpGet,
 } from "inversify-express-utils";
 import type { IHttpActionResult } from "inversify-express-utils";
 

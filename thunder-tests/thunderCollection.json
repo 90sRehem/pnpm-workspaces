@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "_id": "2ac648a7-1621-4546-b009-382726204588",
+    "colName": "monorepo-template",
+    "created": "2022-09-10T00:11:40.873Z",
+    "sortNum": 10000,
+    "folders": []
+  }
+]

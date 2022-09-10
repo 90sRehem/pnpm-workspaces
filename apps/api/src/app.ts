@@ -6,19 +6,19 @@ import "dotenv/config";
 import { Container } from "inversify";
 import { InversifyExpressServer } from "inversify-express-utils";
 
-// import { MIDDLEWARES, REPOSITORIES } from "@/config/constants";
-// import { AppError } from "@/domain/errors";
-// import { SessionHandler } from "@/domain/handlers";
-// import { UserQueries } from "@/domain/queries";
-// import { IAuthRepository, IUserRepository } from "@/domain/repositories";
-// import {
-//   AuthRepositoryInMemory,
-//   UserRepositoryInMemory,
-// } from "@/infra/repositories";
+import {
+  AppError,
+  IAuthRepository,
+  IUserRepository,
+  MIDDLEWARES,
+  REPOSITORIES,
+  SessionHandler,
+  UserQueries,
+} from "domain/index";
 
+import { AuthGuardMiddleware, CustomAuthProvider } from "./middlewares";
+import { UserRepositoryInMemory, AuthRepositoryInMemory } from "./infra";
 import "./controllers";
-// import { AuthGuardMiddleware } from "./middlewares/AuthGuardMiddleware";
-// import { CustomAuthProvider } from "./middlewares/CustomAuthProvider";
 
 export class App {
   private readonly _app: InversifyExpressServer;
@@ -34,7 +34,7 @@ export class App {
         rootPath: "/api/v1",
       },
       null,
-      // CustomAuthProvider,
+      CustomAuthProvider,
     );
     this.createServer();
     this.configDependencies();
@@ -45,17 +45,17 @@ export class App {
   }
 
   private configDependencies(): void {
-    // this._container
-    //   .bind<IUserRepository>(REPOSITORIES.UsersRepository)
-    //   .to(UserRepositoryInMemory);
-    // this._container
-    //   .bind<IAuthRepository>(REPOSITORIES.AuthRepository)
-    //   .to(AuthRepositoryInMemory);
-    // this._container.bind(UserQueries).toSelf();
-    // this._container.bind(SessionHandler).toSelf();
-    // this._container
-    //   .bind<AuthGuardMiddleware>(MIDDLEWARES.AuthGuardMiddleWare)
-    //   .to(AuthGuardMiddleware);
+    this._container
+      .bind<IUserRepository>(REPOSITORIES.UsersRepository)
+      .to(UserRepositoryInMemory);
+    this._container
+      .bind<IAuthRepository>(REPOSITORIES.AuthRepository)
+      .to(AuthRepositoryInMemory);
+    this._container.bind(UserQueries).toSelf();
+    this._container.bind(SessionHandler).toSelf();
+    this._container
+      .bind<AuthGuardMiddleware>(MIDDLEWARES.AuthGuardMiddleWare)
+      .to(AuthGuardMiddleware);
   }
 
   private createServer(): void {
@@ -83,14 +83,14 @@ export class App {
     response: express.Response,
     _next: express.NextFunction,
   ) {
-    // if (err instanceof AppError) {
-    //   console.error(err);
+    if (err instanceof AppError) {
+      console.error(err);
 
-    //   return response.status(err.statusCode).json({
-    //     status: "error",
-    //     message: err.message,
-    //   });
-    // }
+      return response.status(err.statusCode).json({
+        status: "error",
+        message: err.message,
+      });
+    }
 
     console.error(err);
 

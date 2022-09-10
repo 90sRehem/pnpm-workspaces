@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "_id": "1324c817-4fcb-4056-a722-1fd20bfdff84",
+    "colId": "2ac648a7-1621-4546-b009-382726204588",
+    "containerId": "",
+    "name": "healthcheck",
+    "url": "http://localhost:3333/api/v1/",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-09-10T00:12:00.222Z",
+    "modified": "2022-09-10T00:21:01.046Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
+]

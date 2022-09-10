@@ -1,9 +1,11 @@
 import { injectable } from "inversify";
 
-import { User } from "@/domain/entities";
-import { UserMap } from "@/domain/mappers";
-import { IUserRepository } from "@/domain/repositories";
-import { Email } from "@/domain/valueObjects";
+import {
+  Email,
+  IUserRepository,
+  User,
+  UserMap,
+} from "domain/index";
 
 @injectable()
 export class UserRepositoryInMemory implements IUserRepository {
@@ -38,17 +40,13 @@ export class UserRepositoryInMemory implements IUserRepository {
   }
 
   async findByEmail(email: string | Email): Promise<User> {
-    return this.users.find(user => {
-      return email instanceof Email
-        ? user.email.address === email.address
-        : user.email.address === email;
-    }) as User;
+    return this.users.find((user) => (email instanceof Email
+      ? user.email.address === email.address
+      : user.email.address === email)) as User;
   }
 
   async findById(id: string): Promise<User> {
-    return this.users.find(user => {
-      return user.id.toString() === id;
-    }) as User;
+    return this.users.find((user) => user.id.toString() === id) as User;
   }
 
   async save(user: User): Promise<void> {

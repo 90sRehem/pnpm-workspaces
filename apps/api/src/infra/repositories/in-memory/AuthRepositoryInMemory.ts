@@ -1,8 +1,8 @@
 import { injectable } from "inversify";
 import jwt, { JwtPayload, Jwt } from "jsonwebtoken";
 
-import { authConfig } from "@/config/auth";
-import { IAuthRepository } from "@/domain/repositories";
+import { IAuthRepository } from "domain/index";
+import { authConfig } from "domain/src/constants";
 
 @injectable()
 export class AuthRepositoryInMemory implements IAuthRepository {
