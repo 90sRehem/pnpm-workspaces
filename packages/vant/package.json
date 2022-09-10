@@ -1,0 +1,19 @@
+{
+  "name": "vant",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest",
+    "build": "tsc"
+  },
+  "keywords": [
+    "domain notifications",
+    "domain validations",
+    "ts",
+    "typescript",
+    "ddd"
+  ],
+  "author": "Jonathan Rehem <jonathan.de.oliveira@live.com>",
+  "license": "MIT"
+}
