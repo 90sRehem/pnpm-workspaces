@@ -1,7 +1,7 @@
 {
-  "name": "vant",
+  "name": "dovant",
   "version": "1.0.0",
-  "description": "",
+  "description": "Domain validations and notifications.",
   "main": "index.js",
   "scripts": {
     "test": "vitest",
