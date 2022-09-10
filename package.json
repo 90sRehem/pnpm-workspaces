@@ -4,7 +4,7 @@
   "description": "Template for monorepos",
   "private": true,
   "scripts": {
-    "test": "jest"
+    "test": "vitest"
   },
   "keywords": [],
   "author": "Jonathan Rehem <jonathan.de.oliveira@live.com>",

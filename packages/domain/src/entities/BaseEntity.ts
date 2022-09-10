@@ -1,18 +1,18 @@
-import { Notifiable } from "notifications";
+import { Notifiable } from "vant";
 
-import { UniqueId } from "../valueObjects/UniqueId";
+import { Guid } from "../valueObjects/Guid";
 
 export abstract class BaseEntity<T> extends Notifiable {
-  protected readonly _id: UniqueId;
+  protected readonly _id: Guid;
   protected readonly _props: T;
 
-  constructor(props: T, id?: UniqueId) {
+  constructor(props: T, id?: Guid) {
     super();
-    this._id = id || new UniqueId();
+    this._id = id || new Guid();
     this._props = props;
   }
 
-  public get id(): UniqueId {
+  public get id(): Guid {
     return this._id;
   }
 

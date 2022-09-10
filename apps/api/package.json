@@ -11,7 +11,6 @@
   "author": "Jonathan Rehem <jonathan.de.oliveira@live.com>",
   "license": "ISC",
   "dependencies": {
-    "@types/jsonwebtoken": "^8.5.9",
     "cors": "^2.8.5",
     "domain": "workspace:*",
     "dotenv": "^16.0.2",
@@ -22,5 +21,8 @@
     "jsonwebtoken": "^8.5.1",
     "reflect-metadata": "^0.1.13",
     "shallow-equal-object": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^8.5.9"
   }
 }

@@ -1,5 +1,9 @@
 import {
-  Avatar, Email, Name, Password, UniqueId,
+  Avatar,
+  Email,
+  Name,
+  Password,
+  Guid,
 } from "../valueObjects";
 import { BaseEntity } from "./BaseEntity";
 
@@ -8,10 +12,11 @@ interface IUserProps {
   email: Email;
   password: Password;
   avatar?: Avatar;
+  createdAt: string;
 }
 
 export class User extends BaseEntity<IUserProps> {
-  constructor(props: IUserProps, id?: UniqueId) {
+  constructor(props: IUserProps, id?: Guid) {
     super(props, id);
     this.AddNotifications(this._props.email.GetNotifications);
     this.AddNotifications(this._props.name.GetNotifications);
@@ -32,5 +37,9 @@ export class User extends BaseEntity<IUserProps> {
 
   public get avatar(): Avatar | null {
     return this._props.avatar || null;
+  }
+
+  public get createdAt(): string {
+    return this._props.createdAt;
   }
 }

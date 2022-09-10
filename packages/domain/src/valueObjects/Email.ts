@@ -1,4 +1,4 @@
-import { Contract } from "validations";
+import { Contract } from "vant";
 
 import { ValueObject } from "./ValueObject";
 

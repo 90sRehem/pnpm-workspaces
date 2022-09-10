@@ -1,18 +1,18 @@
 import { randomUUID } from "crypto";
 
-export class UniqueId {
+export class Guid {
   private _value: string;
 
   constructor(id?: string) {
     this._value = id || randomUUID();
   }
 
-  public Equals(id?: UniqueId): boolean {
+  public Equals(id?: Guid): boolean {
     if (id === null || id === undefined) {
       return false;
     }
 
-    if (!(id instanceof UniqueId)) {
+    if (!(id instanceof Guid)) {
       return false;
     }
 

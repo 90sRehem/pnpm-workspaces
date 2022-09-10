@@ -13,9 +13,8 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "jsonwebtoken": "^8.5.1",
-    "notifications": "workspace:*",
-    "shallow-equal-object": "^1.1.1",
-    "validations": "workspace:*"
+    "vant": "workspace:*",
+    "shallow-equal-object": "^1.1.1"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",

@@ -53,7 +53,6 @@ importers:
       reflect-metadata: ^0.1.13
       shallow-equal-object: ^1.1.1
     dependencies:
-      '@types/jsonwebtoken': 8.5.9
       cors: 2.8.5
       domain: link:../../packages/domain
       dotenv: 16.0.2
@@ -64,6 +63,8 @@ importers:
       jsonwebtoken: 8.5.1
       reflect-metadata: 0.1.13
       shallow-equal-object: 1.1.1
+    devDependencies:
+      '@types/jsonwebtoken': 8.5.9
 
   apps/client:
     specifiers:
@@ -199,15 +200,13 @@ importers:
       bcrypt: ^5.0.1
       inversify: ^6.0.1
       jsonwebtoken: ^8.5.1
-      notifications: workspace:*
       shallow-equal-object: ^1.1.1
-      validations: workspace:*
+      vant: workspace:*
     dependencies:
       bcrypt: 5.0.1
       jsonwebtoken: 8.5.1
-      notifications: link:../notifications
       shallow-equal-object: 1.1.1
-      validations: link:../validations
+      vant: link:../vant
     devDependencies:
       '@types/bcrypt': 5.0.0
       '@types/jsonwebtoken': 8.5.9
@@ -231,6 +230,7 @@ importers:
       eslint-plugin-react-hooks: ^4.3.0
       eslint-plugin-standard: ^4.0.1
       prettier: ^2.6.2
+      typescript: ^4.8.3
     devDependencies:
       '@typescript-eslint/eslint-plugin': 5.36.2_2l2r3i3lm6jysqd4ac3ql4n2mm
       '@typescript-eslint/parser': 5.36.2_itqs5654cmlnjraw6gjzqacppi
@@ -248,6 +248,7 @@ importers:
       eslint-plugin-react-hooks: 4.6.0_eslint@8.23.0
       eslint-plugin-standard: 4.1.0_eslint@8.23.0
       prettier: 2.7.1
+      typescript: 4.8.3
 
   packages/notifications:
     specifiers:
@@ -262,6 +263,9 @@ importers:
       notifications: workspace:*
     dependencies:
       notifications: link:../notifications
+
+  packages/vant:
+    specifiers: {}
 
 packages:
 
@@ -5196,6 +5200,7 @@ packages:
     resolution: {integrity: sha512-272FMnFGzAVMGtu9tkr29hRL6bZj4Zs1KZNeHLnKqAvp06tAIcarTMwOh8/8bz4FmKRcMxZhZNeUAQsNLoiPhg==}
     dependencies:
       '@types/node': 18.7.16
+    dev: true
 
   /@types/lodash.mergewith/4.6.6:
     resolution: {integrity: sha512-RY/8IaVENjG19rxTZu9Nukqh0W2UrYgmBj5sdns4hWRZaV8PqR7wIKHFKzvOTjo4zVRV7sVI+yFhAJql12Kfqg==}
@@ -8301,7 +8306,7 @@ packages:
     dependencies:
       confusing-browser-globals: 1.0.11
       eslint: 8.23.0
-      eslint-plugin-import: 2.26.0_ikxfxf6lcdzwf3sfhs76tj4x7m
+      eslint-plugin-import: 2.26.0_ijmu6epd3rsbb7y7umh7oqxvja
       object.assign: 4.1.4
       object.entries: 1.1.5
       semver: 6.3.0
@@ -8319,7 +8324,7 @@ packages:
     dependencies:
       eslint: 8.23.0
       eslint-config-airbnb-base: 15.0.0_faomjyrlgqmwswvqymymzkxcqi
-      eslint-plugin-import: 2.26.0_ikxfxf6lcdzwf3sfhs76tj4x7m
+      eslint-plugin-import: 2.26.0_ijmu6epd3rsbb7y7umh7oqxvja
       eslint-plugin-jsx-a11y: 6.6.1_eslint@8.23.0
       eslint-plugin-react: 7.31.7_eslint@8.23.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.23.0
