@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "vant": [
+        "packages/vant/index"
+      ],
+      "domain": [
+        "packages/domain/index"
+      ]
+    }
+  }
+}
