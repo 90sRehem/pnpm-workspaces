@@ -1,6 +1,4 @@
-import { Notifiable } from "notifications";
-import { Contract } from "validations";
-
+import { Notifiable, Contract } from "vant";
 import { ICreateUserDTO } from "../dtos";
 import { ICommand } from "./ICommand";
 

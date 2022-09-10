@@ -1,4 +1,4 @@
-import { Notifiable } from "notifications";
+import { Notifiable } from "vant";
 
 import { CommandResult, CreateUserCommand, ICommandResult } from "../commands";
 import { User } from "../entities";
@@ -40,6 +40,7 @@ export class CreateUserHandler
         lastName: command.lastName,
       }),
       password: new Password({ value: command.password }),
+      createdAt: "",
     });
 
     await this._repository.save(user);

@@ -1,6 +1,4 @@
-import { Notifiable } from "notifications";
-import { Contract } from "validations";
-
+import { Contract, Notifiable } from "vant";
 import { ICommand } from "./ICommand";
 
 export class CreateRefreshTokenCommand

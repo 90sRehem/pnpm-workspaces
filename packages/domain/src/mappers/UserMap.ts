@@ -1,5 +1,8 @@
 import {
-  Email, Name, Password, UniqueId,
+  Email,
+  Name,
+  Password,
+  Guid,
 } from "../valueObjects";
 import { User } from "../entities";
 
@@ -28,8 +31,9 @@ export class UserMap {
         email: new Email({ address: raw.email }),
         name: new Name({ firstName, lastName }),
         password: new Password({ value: raw.password as string }),
+        createdAt: "",
       },
-      new UniqueId(raw.id),
+      new Guid(raw.id),
     );
   }
 }
