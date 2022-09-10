@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "vitest",
+    "build": "rimraf ./dist && tsc"
   },
   "keywords": [],
   "author": "Jonathan Rehem <jonathan.de.oliveira@live.com>",
