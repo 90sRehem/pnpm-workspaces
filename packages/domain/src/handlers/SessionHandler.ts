@@ -1,5 +1,5 @@
 import { inject, injectable } from "inversify";
-import { Notifiable } from "vant";
+import { Notifiable } from "dovant";
 
 import { REPOSITORIES } from "../constants";
 

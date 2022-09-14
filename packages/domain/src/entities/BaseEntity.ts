@@ -1,4 +1,4 @@
-import { Notifiable } from "vant";
+import { Notifiable } from "dovant";
 
 import { Guid } from "../valueObjects/Guid";
 

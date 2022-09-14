@@ -1,4 +1,4 @@
-import { Notifiable, Contract } from "vant";
+import { Notifiable, Contract } from "dovant";
 import { ICommand } from "./ICommand";
 
 export class CreateSessionCommand

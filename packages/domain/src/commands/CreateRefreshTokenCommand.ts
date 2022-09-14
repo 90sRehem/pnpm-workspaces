@@ -1,4 +1,4 @@
-import { Contract, Notifiable } from "vant";
+import { Contract, Notifiable } from "dovant";
 import { ICommand } from "./ICommand";
 
 export class CreateRefreshTokenCommand

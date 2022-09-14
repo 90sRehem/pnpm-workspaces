@@ -1,6 +1,6 @@
 import { shallowEqual } from "shallow-equal-object";
 
-import { Notifiable } from "vant";
+import { Notifiable } from "dovant";
 
 interface IValueObjectProps {
   [index: string]: any;

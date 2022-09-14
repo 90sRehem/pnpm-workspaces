@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 
-import { Contract } from "vant";
+import { Contract } from "dovant";
 
 import { ValueObject } from "./ValueObject";
 

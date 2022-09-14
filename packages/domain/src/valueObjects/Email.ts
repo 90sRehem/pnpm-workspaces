@@ -1,4 +1,4 @@
-import { Contract } from "vant";
+import { Contract } from "dovant";
 
 import { ValueObject } from "./ValueObject";
 

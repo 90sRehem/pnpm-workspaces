@@ -2,7 +2,7 @@
   "name": "dovant",
   "version": "1.0.0",
   "description": "Domain validations and notifications.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "vitest",
     "build": "tsc"

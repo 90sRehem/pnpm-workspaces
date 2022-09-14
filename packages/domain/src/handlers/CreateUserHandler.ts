@@ -1,4 +1,4 @@
-import { Notifiable } from "vant";
+import { Notifiable } from "dovant";
 
 import { CommandResult, CreateUserCommand, ICommandResult } from "../commands";
 import { User } from "../entities";
