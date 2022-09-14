@@ -1,8 +1,6 @@
+import { authConfig, IAuthRepository } from "@monorepo-template/domain";
 import { injectable } from "inversify";
 import jwt, { JwtPayload, Jwt } from "jsonwebtoken";
-
-import { IAuthRepository } from "domain/index";
-import { authConfig } from "domain/src/constants";
 
 @injectable()
 export class AuthRepositoryInMemory implements IAuthRepository {

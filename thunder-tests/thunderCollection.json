@@ -1,9 +1,24 @@
 [
   {
-    "_id": "2ac648a7-1621-4546-b009-382726204588",
-    "colName": "monorepo-template",
-    "created": "2022-09-10T00:11:40.873Z",
+    "_id": "3d22ca9a-96bb-4b50-8b47-bf4a2a7fd4eb",
+    "colName": "template",
+    "created": "2022-09-01T13:28:51.705Z",
     "sortNum": 10000,
-    "folders": []
+    "folders": [
+      {
+        "_id": "6c00fedd-e663-4917-8c3e-3504b1e2ce20",
+        "name": "auth",
+        "containerId": "",
+        "created": "2022-09-01T13:28:57.136Z",
+        "sortNum": 10000
+      },
+      {
+        "_id": "922350ff-8288-49f6-a959-024efc9d0170",
+        "name": "users",
+        "containerId": "",
+        "created": "2022-09-01T13:29:02.187Z",
+        "sortNum": 20000
+      }
+    ]
   }
 ]

@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { injectable, inject } from "inversify";
 import { interfaces } from "inversify-express-utils";
 
-import { IAuthRepository, REPOSITORIES, Principal } from "domain/index";
+import { IAuthRepository, REPOSITORIES, Principal } from "@monorepo-template/domain";
 
 const authRepository = inject(REPOSITORIES.AuthRepository);
 

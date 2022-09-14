@@ -3,9 +3,11 @@ import "express-async-errors";
 import cors from "cors";
 import express from "express";
 import "dotenv/config";
+
 import { Container } from "inversify";
 import { InversifyExpressServer } from "inversify-express-utils";
-
+// eslint-disable-next-line import/no-extraneous-dependencies
+import * as swagger from "swagger-express-ts";
 import {
   AppError,
   IAuthRepository,
@@ -14,7 +16,7 @@ import {
   REPOSITORIES,
   SessionHandler,
   UserQueries,
-} from "domain/index";
+} from "@monorepo-template/domain";
 
 import { AuthGuardMiddleware, CustomAuthProvider } from "./middlewares";
 import { UserRepositoryInMemory, AuthRepositoryInMemory } from "./infra";
@@ -66,6 +68,23 @@ export class App {
       app.disable("x-powered-by");
       app.use(express.json());
       app.use(this.errorMiddleware);
+      // app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerFile));
+      app.use("/api-docs/swagger", express.static("swagger"));
+      app.use("/api-docs/swagger/assets", express.static("node_modules/swagger-ui-dist"));
+      app.use(swagger.express(
+        {
+          definition: {
+            info: {
+              title: "Swagger para Node/Express",
+              description: "Documentação de um API Node/Express com Swagger - Experts Club",
+              version: "1.0.0",
+            },
+            host: "localhost:3333",
+            openapi: "3.0.1",
+            // Models can be defined here
+          },
+        },
+      ));
     });
   }
 

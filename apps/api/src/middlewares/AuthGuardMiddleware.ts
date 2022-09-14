@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { inject, injectable } from "inversify";
 import { BaseMiddleware } from "inversify-express-utils";
 
-import { IAuthRepository, REPOSITORIES } from "domain/index";
+import { IAuthRepository, REPOSITORIES } from "@monorepo-template/domain";
 
 @injectable()
 export class AuthGuardMiddleware extends BaseMiddleware {

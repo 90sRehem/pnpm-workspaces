@@ -5,14 +5,16 @@
   "main": "src/server.js",
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
-    "test": "vitest"
+    "test": "vitest",
+    "build": "rimraf ./dist && tsc",
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "Jonathan Rehem <jonathan.de.oliveira@live.com>",
   "license": "ISC",
   "dependencies": {
+    "@monorepo-template/domain": "workspace:*",
     "cors": "^2.8.5",
-    "domain": "workspace:*",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
     "express-async-errors": "^3.1.1",
@@ -20,9 +22,12 @@
     "inversify-express-utils": "^6.4.3",
     "jsonwebtoken": "^8.5.1",
     "reflect-metadata": "^0.1.13",
-    "shallow-equal-object": "^1.1.1"
+    "shallow-equal-object": "^1.1.1",
+    "swagger-ui-dist": "^4.14.0",
+    "swagger-ui-express": "^4.5.0"
   },
   "devDependencies": {
-    "@types/jsonwebtoken": "^8.5.9"
+    "@types/jsonwebtoken": "^8.5.9",
+    "@types/swagger-ui-express": "^4.1.3"
   }
 }

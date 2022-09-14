@@ -5,7 +5,7 @@ import {
   IUserRepository,
   User,
   UserMap,
-} from "domain/index";
+} from "@monorepo-template/domain";
 
 @injectable()
 export class UserRepositoryInMemory implements IUserRepository {

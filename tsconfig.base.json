@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
     "paths": {
-      "vant": [
-        "packages/vant/index"
+      "dovant": [
+        "packages/vant"
       ],
       "domain": [
-        "packages/domain/index"
+        "packages/domain"
       ]
     }
   }
