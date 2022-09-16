@@ -1,0 +1,32 @@
+import {
+BaseHttpController,
+controller,
+Controller,
+httpGet,
+} from "inversify-express-utils";
+import type { IHttpActionResult } from "inversify-express-utils";
+import { ApiOperationGet, ApiPath, SwaggerDefinitionConstant } from "swagger-express-ts";
+
+/* A swagger decorator that will be used to generate the swagger documentation. */
+@ApiPath({
+name: "insert the api path name here.",
+path: "insert the api path here.",
+})
+/* A decorator that is used to define the route and the middleware that will be used. */
+@controller("insert your route here.")
+export class <%= props.name %>
+  extends BaseHttpController
+  implements Controller {
+  /* A swagger decorator that will be used to generate the swagger documentation. */
+  @ApiOperationGet({
+  description: "insert description here.",
+  summary: "insert summary here.",
+  responses:{} //insert your responses here.
+  })
+
+  /* A decorator that is used to define the route and the middleware that will be used. */
+  @httpGet("insert your route here.")
+  public index(): IHttpActionResult {
+  return this.ok("Server ok.");
+  }
+  }

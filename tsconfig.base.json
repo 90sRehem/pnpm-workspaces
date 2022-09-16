@@ -2,10 +2,13 @@
   "compilerOptions": {
     "paths": {
       "dovant": [
-        "packages/vant"
+        "packages/dovant"
       ],
       "domain": [
         "packages/domain"
+      ],
+      "api": [
+        "apps/api"
       ]
     }
   }

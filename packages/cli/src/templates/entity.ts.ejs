@@ -1,0 +1,18 @@
+import { Guid } from "../valueObjects";
+import { BaseEntity } from "./BaseEntity";
+
+interface <%= props.name.concat("", "Props") %> {
+  // insert the entity props here.
+}
+
+export class <%= props.name %> extends BaseEntity <<%= props.name.concat("", "Props") %>> {
+  constructor(props: <%= props.name.concat("", "Props") %>, id ?: Guid) {
+  super(props, id);
+  this.AddNotifications(this._props.example.GetNotifications); // insert domain validations here.
+}
+
+  //insert Getters and Setters here
+  public get example(): Example {
+  return this._props.example;
+}
+}
