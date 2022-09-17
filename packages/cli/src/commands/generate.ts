@@ -1,23 +1,13 @@
+// eslint-disable-next-line import/no-import-module-exports
 import { GluegunToolbox } from "gluegun";
 
 module.exports = {
   name: "generate",
   alias: ["g"],
-  run: async (toolbox: GluegunToolbox) => {
-    const {
-      parameters,
-      template: { generate },
-      print: { info },
-    } = toolbox;
-
-    const name = parameters.first;
-
-    await generate({
-      template: "model.ts.ejs",
-      target: `models/${name}-model.ts`,
-      props: { name },
-    });
-
-    info(`Generated file at models/${name}-model.ts`);
+  run: async ({
+    parameters,
+    createComponent,
+  }: GluegunToolbox) => {
+    await createComponent(parameters.first, parameters.second, parameters.options.path);
   },
 };
