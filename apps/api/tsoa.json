@@ -5,6 +5,18 @@
     "src/controllers/*Controller.ts"
   ],
   "spec": {
+    "spec": {
+      "servers": [
+        {
+          "url": "http://localhost:3333/",
+          "description": "Local development"
+        },
+        {
+          "url": "http://prod:8080/",
+          "description": "Prod development"
+        }
+      ]
+    },
     "outputDirectory": "build",
     "host": "localhost:3333",
     "basePath": "/",
