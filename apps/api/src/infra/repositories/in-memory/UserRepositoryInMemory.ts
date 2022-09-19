@@ -1,5 +1,3 @@
-import { injectable } from "inversify";
-
 import {
   Email,
   IUserRepository,
@@ -7,7 +5,6 @@ import {
   UserMap,
 } from "@monorepo-template/domain";
 
-@injectable()
 export class UserRepositoryInMemory implements IUserRepository {
   private users: User[] = [];
 

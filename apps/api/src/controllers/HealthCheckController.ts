@@ -1,17 +1,27 @@
+import { injectable } from "tsyringe";
 import {
-  BaseHttpController,
-  controller,
   Controller,
-  httpGet,
-} from "inversify-express-utils";
-import type { IHttpActionResult } from "inversify-express-utils";
+  Get,
+  Route,
+  SuccessResponse,
+  Tags,
+} from "tsoa";
 
-@controller("/")
+@injectable()
+@Tags("health-check")
+@Route("api/")
 export class HealthCheckController
-  extends BaseHttpController
-  implements Controller {
-  @httpGet("/")
-  public index(): IHttpActionResult {
-    return this.ok("Server ok.");
+  extends Controller {
+  constructor() {
+    super();
+  }
+  /**
+   * Enpoint para verificar a saúde do servidor.
+   * @summary Retorna o status do servidor.
+   */
+  @SuccessResponse(200)
+  @Get("/")
+  public async index(): Promise<string> {
+    return "server ok.";
   }
 }

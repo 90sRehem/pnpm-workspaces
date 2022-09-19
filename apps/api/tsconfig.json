@@ -20,19 +20,29 @@
     "strict": true,
     "skipLibCheck": true,
     "strictPropertyInitialization": false,
+    "resolveJsonModule": true,
     "outDir": "./dist",
-    "rootDir": "src",
+    "rootDir": "..",
     "paths": {
+      "@domain": [
+        "../packages/domain/*"
+      ],
       "@/*": [
         "./src/*"
       ]
-    },
+    }
   },
   "include": [
-    "./src/**/*"
+    "./src/**/*",
+    "./swagger/*",
+    "../packages/domain/*"
   ],
   "exclude": [
     "node_modules",
     "dist",
+  ],
+  "typeRoots": [
+    "./src/@types",
+    "./node_modules/@types"
   ]
 }

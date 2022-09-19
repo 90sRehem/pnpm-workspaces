@@ -1,49 +1,65 @@
-import { SessionHandler, CreateSessionCommand, CreateRefreshTokenCommand } from "@monorepo-template/domain";
 import {
-  controller,
-  BaseHttpController,
-  IHttpActionResult,
+  SessionHandler,
+  CreateSessionCommand,
+  CreateRefreshTokenCommand,
+  CommandResult,
+  IAuthUserDTO,
+} from "@monorepo-template/domain";
+import { injectable } from "tsyringe";
+import {
+  Body,
   Controller,
-  httpPost,
-} from "inversify-express-utils";
+  Route,
+  SuccessResponse,
+  Tags,
+  Response,
+  Post,
+} from "tsoa";
 
-@controller("/session")
+@injectable()
+@Tags("session")
+@Route("api/v1/session")
 export class SessionController
-  extends BaseHttpController
-  implements Controller {
+  extends Controller {
   constructor(private readonly _sessionHandler: SessionHandler) {
     super();
   }
 
-  @httpPost("/")
-  public async authenticate(): Promise<IHttpActionResult> {
-    const { email, password } = this.httpContext.request.body as {
-      email: string;
-      password: string;
-    };
+  @Post("/")
+  @SuccessResponse(200, "Successo.")
+  @Response(400)
+  public async authenticate(
+    @Body() body: { email: string; password: string },
+  ): Promise<CommandResult<IAuthUserDTO>> {
+    const { email, password } = body;
     const command = new CreateSessionCommand(email, password);
     const session = await this._sessionHandler.handle(command);
 
     if (session.success) {
-      return this.ok(session);
+      this.setStatus(200);
+      return session;
     }
 
-    return this.json(session, 400);
+    this.setStatus(400);
+    return session;
   }
 
-  @httpPost("/refresh")
-  public async refresh(): Promise<IHttpActionResult> {
-    const { refreshToken, userId } = this.httpContext.request.body as {
-      refreshToken: string;
-      userId: string;
-    };
+  @Post("/refresh")
+  @SuccessResponse(200, "Successo.")
+  @Response(400)
+  public async refresh(
+    @Body() body: { refreshToken: string; userId: string },
+  ): Promise<CommandResult<IAuthUserDTO>> {
+    const { refreshToken, userId } = body;
     const command = new CreateRefreshTokenCommand(refreshToken, userId);
     const createRefreshToken = await this._sessionHandler.handle(command);
 
     if (createRefreshToken.success) {
-      return this.ok(createRefreshToken);
+      this.setStatus(200);
+      return createRefreshToken;
     }
 
-    return this.json(createRefreshToken, 400);
+    this.setStatus(400);
+    return createRefreshToken;
   }
 }

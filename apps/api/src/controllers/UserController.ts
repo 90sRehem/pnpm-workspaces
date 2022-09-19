@@ -1,45 +1,48 @@
-import { MIDDLEWARES, UserQueries, CommandResult } from "@monorepo-template/domain";
 import {
-  httpGet,
-  BaseHttpController,
-  IHttpActionResult,
-  controller,
-} from "inversify-express-utils";
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { ApiOperationGet, ApiPath, SwaggerDefinitionConstant } from "swagger-express-ts";
+  CommandResult,
+  IListUsersDTO,
+  IQueryResult,
+  UserQueries,
+} from "@monorepo-template/domain";
+import {
+  Controller,
+  Get,
+  Query,
+  Request,
+  Route,
+  Security,
+  SuccessResponse,
+  Tags,
+} from "tsoa";
+import { injectable } from "tsyringe";
+import express from "express";
 
-@ApiPath({
-  name: "users",
-  path: "/users",
-})
-@controller("/users", MIDDLEWARES.AuthGuardMiddleWare)
-export class UsersController extends BaseHttpController {
+interface ICustomRequest extends express.Request {
+  user: string;
+}
+
+@injectable()
+@Tags("users")
+@Route("api/v1/users")
+export class UsersController extends Controller {
   constructor(private readonly userQueries: UserQueries) {
     super();
   }
 
-  @ApiOperationGet({
-    description: "Get versions objects list",
-    summary: "Get versions list",
-    responses: {
-      200: {
-        description: "Success",
-        type: SwaggerDefinitionConstant.Response.Type.OBJECT,
-        model: "CommandResult",
-      },
-    },
-    security: {
-      apiKeyHeader: [],
-    },
-  })
-  @httpGet("/")
-  public async listAllUsers(): Promise<IHttpActionResult> {
-    const users = await this.userQueries.list(
-      this.httpContext.user.details,
-      Number(this.httpContext.request.query.page),
-      Number(this.httpContext.request.query.limit),
+  @Security("jwt")
+  @SuccessResponse(200)
+  @Get("/")
+  public async listAllUsers(
+    @Request() request: ICustomRequest,
+    @Query("page") page: number,
+    @Query("limit") limit: number,
+  ): Promise<IQueryResult<IListUsersDTO>> {
+    const { data, totalCount } = await this.userQueries.list(
+      request.user,
+      Number(page),
+      Number(limit),
     );
-    this.httpContext.response.setHeader("X-Total-Count", users.totalCount);
-    return this.ok(new CommandResult(true, "Sucesso.", users.data));
+
+    return new CommandResult(true, "Sucesso.", { total: totalCount, users: data });
   }
 }
