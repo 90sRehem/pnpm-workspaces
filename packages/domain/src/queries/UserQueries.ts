@@ -1,14 +1,12 @@
-import { inject, injectable } from "inversify";
-
-import { REPOSITORIES } from "../constants";
-
+import { inject, injectable } from "tsyringe";
+import { ERepositories } from "../enums";
 import { UserMap } from "../mappers";
 import type { IUserRepository } from "../repositories";
 
 @injectable()
 export class UserQueries {
   constructor(
-    @inject(REPOSITORIES.UsersRepository)
+    @inject(ERepositories.UsersRepository)
     private readonly _userRepository: IUserRepository,
   ) { }
 

@@ -9,7 +9,7 @@ export interface IAuthRepository {
     payload: string | Record<string, unknown> | Buffer,
     subject: string | undefined,
   ): { token: string; expiresIn: string | number };
-  createRefreshToken(): { refreshToken: string | number };
+  createRefreshToken(): { refreshToken: string };
   verify(token: string): string | JwtPayload;
   decode(token: string): Jwt | null;
 }

@@ -15,7 +15,8 @@
     "dotenv": "^16.0.2",
     "dovant": "workspace:*",
     "jsonwebtoken": "^8.5.1",
-    "shallow-equal-object": "^1.1.1"
+    "shallow-equal-object": "^1.1.1",
+    "tsyringe": "^4.7.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",

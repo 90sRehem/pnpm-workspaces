@@ -1,7 +1,7 @@
-import { inject, injectable } from "inversify";
+import { inject, injectable } from "tsyringe";
 import { Notifiable } from "dovant";
 
-import { REPOSITORIES } from "../constants";
+import { IAuthUserDTO } from "../dtos";
 
 import {
   CommandResult,
@@ -11,9 +11,10 @@ import {
 } from "../commands";
 import type { IAuthRepository, IUserRepository } from "../repositories";
 import { ICommandHandler } from "./ICommandHandler";
+import { ERepositories } from "../enums";
 
-type CreateSessionCommandResult = Record<string, unknown>;
-type CreateRefreshTokenCommandResult = Record<string, unknown>;
+type CreateSessionCommandResult = IAuthUserDTO;
+type CreateRefreshTokenCommandResult = IAuthUserDTO;
 
 @injectable()
 export class SessionHandler
@@ -22,9 +23,9 @@ export class SessionHandler
   ICommandHandler<CreateSessionCommand, CreateSessionCommandResult>,
   ICommandHandler<CreateRefreshTokenCommand, CreateRefreshTokenCommandResult> {
   constructor(
-    @inject(REPOSITORIES.UsersRepository)
+    @inject(ERepositories.UsersRepository)
     private readonly _userRepository: IUserRepository,
-    @inject(REPOSITORIES.AuthRepository)
+    @inject(ERepositories.AuthRepository)
     private readonly _authRepository: IAuthRepository,
   ) {
     super();
@@ -39,7 +40,7 @@ export class SessionHandler
     command: CreateSessionCommand | CreateRefreshTokenCommand,
   ): Promise<ICommandResult<unknown>> {
     command.validate();
-    let result: Record<string, unknown> = {};
+    let result: IAuthUserDTO;
 
     if (command instanceof CreateSessionCommand) {
       if (command.Invalid) {

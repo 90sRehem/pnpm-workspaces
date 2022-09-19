@@ -1,6 +1,5 @@
 import "dotenv/config";
 import { Secret } from "jsonwebtoken";
-import { EHandlers, ERepositories } from "../enums";
 
 interface IAuthConfig {
   jwt: {
@@ -32,17 +31,4 @@ export const authConfig: IAuthConfig = {
     //   "\n",
     // ) as string,
   },
-};
-
-export const REPOSITORIES = {
-  UsersRepository: Symbol(ERepositories.UsersRepository),
-  AuthRepository: Symbol(ERepositories.UsersRepository),
-};
-
-export const HANDLERS = {
-  SessionHandler: Symbol(EHandlers.SessionHandler),
-};
-
-export const MIDDLEWARES = {
-  AuthGuardMiddleWare: Symbol("AuthGuardMiddleWare"),
 };

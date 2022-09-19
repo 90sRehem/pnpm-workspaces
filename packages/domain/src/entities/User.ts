@@ -7,7 +7,7 @@ import {
 } from "../valueObjects";
 import { BaseEntity } from "./BaseEntity";
 
-interface IUserProps {
+export interface IUser {
   name: Name;
   email: Email;
   password: Password;
@@ -15,8 +15,8 @@ interface IUserProps {
   createdAt: string;
 }
 
-export class User extends BaseEntity<IUserProps> {
-  constructor(props: IUserProps, id?: Guid) {
+export class User extends BaseEntity<IUser> {
+  constructor(props: IUser, id?: Guid) {
     super(props, id);
     this.AddNotifications(this._props.email.GetNotifications);
     this.AddNotifications(this._props.name.GetNotifications);
