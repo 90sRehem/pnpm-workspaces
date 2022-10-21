@@ -1,0 +1,332 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"IAuthUserDTO": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"token": {
+						"type": "string"
+					},
+					"refreshToken": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"email",
+					"token",
+					"refreshToken"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CommandResult_IAuthUserDTO_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"message": {
+						"type": "string"
+					},
+					"data": {
+						"$ref": "#/components/schemas/IAuthUserDTO"
+					}
+				},
+				"required": [
+					"success",
+					"message",
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IUser": {
+				"properties": {
+					"password": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"id": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"email",
+					"name"
+				],
+				"type": "object"
+			},
+			"IListUsersDTO": {
+				"properties": {
+					"users": {
+						"items": {
+							"$ref": "#/components/schemas/IUser"
+						},
+						"type": "array"
+					},
+					"total": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"users",
+					"total"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"IQueryResult_IListUsersDTO_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"message": {
+						"type": "string"
+					},
+					"data": {
+						"$ref": "#/components/schemas/IListUsersDTO"
+					}
+				},
+				"required": [
+					"success",
+					"message",
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {
+			"api_key": {
+				"type": "apiKey",
+				"name": "access_token",
+				"in": "query"
+			},
+			"tsoa_auth": {
+				"type": "oauth2",
+				"flows": {
+					"implicit": {
+						"authorizationUrl": "http://swagger.io/api/oauth/dialog",
+						"scopes": {
+							"write:pets": "modify things",
+							"read:pets": "read things"
+						}
+					}
+				}
+			},
+			"jwt": {
+				"type": "apiKey",
+				"name": "authorization",
+				"in": "header"
+			}
+		}
+	},
+	"info": {
+		"title": "api",
+		"version": "1.0.0",
+		"description": "description",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {
+			"name": "Jonathan Rehem ",
+			"email": "jonathan.de.oliveira@live.com"
+		}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/api": {
+			"get": {
+				"operationId": "Index",
+				"responses": {
+					"200": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"description": "Enpoint para verificar a saúde do servidor.",
+				"summary": "Retorna o status do servidor.",
+				"tags": [
+					"health-check"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/api/v1/session": {
+			"post": {
+				"operationId": "Authenticate",
+				"responses": {
+					"200": {
+						"description": "Successo.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/CommandResult_IAuthUserDTO_"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": ""
+					}
+				},
+				"tags": [
+					"session"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"password": {
+										"type": "string"
+									},
+									"email": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"password",
+									"email"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/v1/session/refresh": {
+			"post": {
+				"operationId": "Refresh",
+				"responses": {
+					"200": {
+						"description": "Successo.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/CommandResult_IAuthUserDTO_"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": ""
+					}
+				},
+				"tags": [
+					"session"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"userId": {
+										"type": "string"
+									},
+									"refreshToken": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"userId",
+									"refreshToken"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/v1/users": {
+			"get": {
+				"operationId": "ListAllUsers",
+				"responses": {
+					"200": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/IQueryResult_IListUsersDTO_"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"users"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "page",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "limit",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "http://localhost:3333/",
+			"description": "Local development"
+		},
+		{
+			"url": "http://prod:8080/",
+			"description": "Prod development"
+		}
+	]
+}

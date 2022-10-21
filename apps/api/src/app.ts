@@ -1,14 +1,13 @@
 import "reflect-metadata";
-// import "express-async-errors";
+import "express-async-errors";
 import cors from "cors";
 import express from "express";
 import "dotenv/config";
 import swaggerUi from "swagger-ui-express";
 
-import "./controllers";
 import { ValidateError } from "tsoa";
 import { AppError } from "@monorepo-template/domain";
-import { RegisterRoutes } from "../build/routes";
+import { RegisterRoutes } from "./routes";
 
 export class App {
   private readonly _app: express.Express = express();
@@ -23,7 +22,12 @@ export class App {
   }
 
   private createServer(): void {
-    this._app.use(cors({ origin: ["http://localhost:3000", "http://localhost:3001"] }));
+    this._app.use(cors({
+      origin: [
+        "http://localhost:3000",
+        "http://localhost:3001",
+      ],
+    }));
     this._app.disable("x-powered-by");
     this._app.use(
       express.urlencoded({
@@ -37,9 +41,13 @@ export class App {
     RegisterRoutes(this._app);
 
     this._app.use(this.errorHandler);
-    this._app.use("/api-docs", swaggerUi.serve, async (_req: express.Request, res: express.Response) => res.send(
-      swaggerUi.generateHTML(await import("../build/swagger.json")),
-    ));
+    this._app.use(
+      "/api-docs",
+      swaggerUi.serve,
+      async (_req: express.Request, res: express.Response) => res.send(
+        swaggerUi.generateHTML(await import("./swagger.json")),
+      ),
+    );
 
     this._app.use((_req, res: express.Response) => {
       res.status(404).send({

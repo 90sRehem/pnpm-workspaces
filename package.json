@@ -18,7 +18,6 @@
     "jsonwebtoken": "^8.5.1",
     "nx": "^14.7.3",
     "rimraf": "^3.0.2",
-    "swagger-express-ts": "^1.1.0",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.0",
     "tsyringe": "^4.7.0",

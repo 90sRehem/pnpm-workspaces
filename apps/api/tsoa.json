@@ -17,7 +17,7 @@
         }
       ]
     },
-    "outputDirectory": "build",
+    "outputDirectory": "src",
     "host": "localhost:3333",
     "basePath": "/",
     "specVersion": 3,
@@ -47,7 +47,7 @@
     "docExpansion": "none"
   },
   "routes": {
-    "routesDir": "build",
+    "routesDir": "src",
     "iocModule": "../../packages/domain",
     "authenticationModule": "src/middlewares/authentication.ts"
   },
